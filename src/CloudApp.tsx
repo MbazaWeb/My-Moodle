@@ -58,9 +58,9 @@ export default function CloudApp(){
   if(!response.ok)throw new Error('Library index unavailable (HTTP '+response.status+').');
   const data=await response.json();
   if(!Array.isArray(data.subjects))throw new Error('Invalid subject library index.');
-  const entries=data.subjects.filter((s:any)=>s&&typeof s.code==='string'&&typeof s.title==='string'&&typeof s.file==='string'&&Number.isInteger(s.year)&&Number.isInteger(s.semester)&&/^[a-z0-9][a-z0-9._-]*\\.json$/i.test(s.file));
+  const entries=data.subjects.filter((s:any)=>s&&typeof s.code==='string'&&typeof s.title==='string'&&typeof s.file==='string'&&Number.isInteger(s.year)&&Number.isInteger(s.semester)&&/^[a-z0-9][a-z0-9._-]*\.json$/i.test(s.file));
   setPublicSubjects(entries);
-  if(!entries.length){setLibrarySyncStatus('No subjects available');return}
+  if(!entries.length){throw new Error('No valid subjects in index.json. Check filenames and metadata.')}
   let count=0;
   for(const entry of entries){
    setLibrarySyncStatus('Updating '+entry.title+'…');
@@ -72,7 +72,7 @@ export default function CloudApp(){
  }catch(e){setPublicLibraryError(e instanceof Error?e.message:'Automatic library sync failed.');setLibrarySyncStatus('Sync failed')}
  finally{librarySyncLock.current=false;setPublicLibraryLoading(false)}
 }
- useEffect(()=>{if(admin&&(page==='Library'||page==='Dashboard'))void loadPublicLibrary()},[admin,page]);
+ useEffect(()=>{if(admin)void loadPublicLibrary()},[admin]);
  async function syncPublicSubject(entry:{code:string;title:string;year:number;semester:number;description?:string;file:string}){
  const response=await fetch('/docs/subjects/'+encodeURIComponent(entry.file),{cache:'no-store'});
  if(!response.ok)throw new Error('Cannot fetch '+entry.file+' (HTTP '+response.status+')');

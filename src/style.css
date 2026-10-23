@@ -34,3 +34,6 @@
 
 /* Public library catalogue */
 .library-source-row{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 0;border-top:1px solid #e8edf5}.library-source-row h3{margin:0 0 8px}.library-source-row p{margin:4px 0}.library-source-row button{flex-shrink:0}@media(max-width:650px){.library-source-row{align-items:stretch;flex-direction:column}.library-source-row button{width:100%}}
+
+/* Student subject units and chapter navigation */
+.unit-list{display:grid;gap:16px}.unit-card{padding:22px}.unit-header{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.unit-number{width:54px;height:54px;border-radius:14px;background:#eaf2ff;color:#2769c5;display:grid;place-items:center;font-weight:800;font-size:21px;flex-shrink:0}.unit-info{flex:1;min-width:200px}.unit-info h3{margin:5px 0 8px}.unit-info p{margin:0}.unit-eyebrow{font-size:11px;font-weight:800;letter-spacing:.1em;color:#3573ce}.unit-topics{border-top:1px solid #edf1f7;margin-top:18px;padding-top:12px;display:grid;gap:10px}.unit-topic{display:flex;align-items:center;gap:10px;color:#506580;font-size:13px}.unit-topic svg{flex-shrink:0;color:#5487d2}@media(max-width:650px){.unit-header{align-items:flex-start}.unit-header .actions{width:100%}.unit-header .actions button{flex:1}}

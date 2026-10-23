@@ -95,3 +95,54 @@
 
 /* My Moodle identity and footer */
 .brand-icon{width:34px;height:34px;object-fit:contain;flex-shrink:0}.app-footer{padding:26px 22px 30px;text-align:center;font-size:12px;color:#8291a8;border-top:1px solid #e8edf4;margin-top:30px}.app-footer strong,.reader-credit strong{color:#526784;font-weight:700}.reader-credit{text-align:center;font-size:12px;color:#8390a4;padding-top:30px;margin-top:22px;border-top:1px solid #edf0f4}
+
+/* Mobile-first workspace: no horizontal page overflow */
+html,body,#root{width:100%;max-width:100%;min-width:0}body{overflow-x:clip}
+.shell,.main,.content,.card,.hero,.grid,.stat-grid,.assignment-stats,.calendar-columns,.book-reader,.book-layout,.book-paper{min-width:0;max-width:100%}
+.content :is(h1,h2,h3,p,strong,span),.book-paper :is(h1,h2,h3,p,li),.book-toc-item{overflow-wrap:anywhere}
+.grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.mobile-bottom-nav,.reader-contents-toggle{display:none}
+@media(max-width:680px){
+ .shell{display:block;padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+ .sidebar{display:none}
+ .main{width:100%;min-width:0}
+ .topbar{padding:0 16px;height:54px}.crumb{min-width:0;font-size:12px;gap:5px}.crumb strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .content{width:100%;padding:14px 12px 24px}
+ .hero{padding:22px 18px;min-height:0;border-radius:15px;gap:12px}.hero h1{font-size:clamp(22px,6vw,28px);line-height:1.25}.hero p{font-size:13px;line-height:1.55}.hero-button{font-size:13px;padding:10px 12px}
+ .section-head{gap:10px}.section-head h1{font-size:24px}.section-head h2{font-size:19px}
+ .stat-grid,.assignment-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .analytics-grid,.calendar-columns{grid-template-columns:minmax(0,1fr)}
+ .card{padding:16px;margin-bottom:12px}.grid{grid-template-columns:minmax(0,1fr)}
+ .courses-overview{padding:18px}.courses-overview-top{gap:10px}.courses-progress-ring{flex-shrink:0}
+ .courses-tabs{width:100%;gap:10px;overflow-x:auto;overscroll-behavior-inline:contain}.courses-tab{flex-shrink:0;white-space:nowrap}
+ .assignment-tools{min-width:0}.assignment-filter{min-width:0;width:100%}.assignment-filter select{min-width:0;width:100%}
+ .actions{gap:8px}.actions button{max-width:100%;white-space:normal}
+ .modal-backdrop{padding:10px}.profile-modal{max-width:100%;width:100%;max-height:calc(100dvh - 20px);overflow-y:auto}
+ .mobile-bottom-nav{position:fixed;display:flex;bottom:0;left:0;right:0;z-index:50;background:#fff;border-top:1px solid #e2e9f3;box-shadow:0 -4px 20px #142b4810;min-height:65px;padding:7px 5px calc(7px + env(safe-area-inset-bottom,0px));justify-content:space-around;align-items:center;gap:1px}
+ .mobile-nav-item{background:transparent;color:#7889a3;border-radius:10px;padding:7px 2px;display:flex;flex-direction:column;gap:4px;flex:1;min-width:0;font-size:10px;font-weight:650;line-height:1.2}
+ .mobile-nav-item span{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mobile-nav-item.active{color:#2868c6;background:#eaf1fc}.mobile-nav-item svg{flex-shrink:0}
+ .app-footer{padding:18px 8px 24px}
+}
+@media(max-width:850px){
+ .book-reader{width:100%;overflow-x:clip}
+ .book-toolbar{height:auto;min-height:64px;padding:10px 12px;gap:9px;flex-wrap:wrap}
+ .book-toolbar>button{padding:9px 10px;font-size:12px;flex-shrink:0}
+ .book-toolbar-title{flex:1;min-width:0;align-items:flex-start;font-size:12px}
+ .book-toolbar-title strong{max-width:100%;overflow-wrap:anywhere}
+ .book-toolbar-title span{font-size:11px}
+ .book-completion{font-size:10px}
+ .book-layout{display:flex;flex-direction:column;gap:12px;padding:12px;width:100%}
+ .reader-contents-toggle{display:flex;width:100%;justify-content:center;padding:11px}
+ .book-toc{display:none;position:static;width:100%;padding:14px;background:#fff;border:1px solid #e4e8ee;border-radius:12px}
+ .book-toc.reader-toc-open{display:block}
+ .book-paper{width:100%;min-height:0;padding:clamp(18px,5vw,32px);border-radius:10px}
+ .book-paper h1{font-size:clamp(25px,6vw,34px);line-height:1.3;margin:14px 0 20px}
+ .book-intro{font-size:16px;line-height:1.8;padding-left:12px}
+ .book-body{font-size:16px;line-height:1.85}
+ .book-body h2{font-size:21px;margin:26px 0 12px}
+ .book-objectives{padding:15px;margin:20px 0}
+ .book-paper :is(img,video,iframe,table){max-width:100%}
+ .book-paper pre{max-width:100%;overflow-x:auto;white-space:pre-wrap;overflow-wrap:anywhere}
+ .book-paper table{display:block;overflow-x:auto}
+ .book-paper button{max-width:100%;white-space:normal}
+}

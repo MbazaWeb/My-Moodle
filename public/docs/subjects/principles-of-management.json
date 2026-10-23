@@ -1,0 +1,36 @@
+{
+  "document": {
+    "title": "Principles of Management",
+    "authors": [
+      "Roger Powley, CD PhD",
+      "Cindy Edwards"
+    ],
+    "publisher": "Commonwealth of Learning",
+    "year": 2012,
+    "license": "CC-BY-SA 4.0"
+  },
+  "units": [
+    {
+      "unit_number": 1,
+      "title": "The Nature of Management",
+      "unit_introduction": "Introduction to management, managerial roles and responsibilities.",
+      "topics": [
+        {
+          "topic_number": "1.1",
+          "title": "What is Management?",
+          "objectives": [
+            "Explain the meaning of management."
+          ],
+          "key_concepts": [
+            {
+              "concept": "Definition of Management",
+              "details": "Management coordinates people and resources to achieve organizational goals effectively and efficiently."
+            }
+          ],
+          "activities": [],
+          "summary": "Management combines effectiveness and efficiency."
+        }
+      ]
+    }
+  ]
+}

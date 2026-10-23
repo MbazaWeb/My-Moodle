@@ -13,24 +13,199 @@
     {
       "unit_number": 1,
       "title": "The Nature of Management",
-      "unit_introduction": "Introduction to management, managerial roles and responsibilities.",
+      "unit_introduction": "Management is the process of coordinating resources and people to achieve organizational goals. This chapter introduces the meaning, functions, levels, and roles of managers.",
+      "unit_objectives": [
+        "Define management and explain efficiency and effectiveness.",
+        "Identify the four core management functions.",
+        "Describe the responsibilities of managers at different organizational levels."
+      ],
       "topics": [
         {
           "topic_number": "1.1",
-          "title": "What is Management?",
+          "title": "Meaning and Purpose of Management",
           "objectives": [
-            "Explain the meaning of management."
+            "Define management.",
+            "Distinguish effectiveness from efficiency."
           ],
           "key_concepts": [
             {
-              "concept": "Definition of Management",
-              "details": "Management coordinates people and resources to achieve organizational goals effectively and efficiently."
+              "concept": "Management",
+              "details": "Management involves planning, organizing, leading, and controlling human, financial, physical, and information resources to achieve objectives."
+            },
+            {
+              "concept": "Efficiency and Effectiveness",
+              "details": "Efficiency concerns using resources wisely with minimal waste; effectiveness concerns achieving the intended goals. Successful management requires both."
             }
           ],
-          "activities": [],
-          "summary": "Management combines effectiveness and efficiency."
+          "activities": [
+            {
+              "id": "1.1-A",
+              "description": "Choose a local business and identify one example of efficiency and one example of effectiveness."
+            }
+          ],
+          "summary": "Managers coordinate resources to accomplish goals efficiently and effectively."
+        },
+        {
+          "topic_number": "1.2",
+          "title": "Functions and Levels of Management",
+          "objectives": [
+            "Explain planning, organizing, leading and controlling.",
+            "Differentiate top, middle and first-line management."
+          ],
+          "key_concepts": [
+            {
+              "concept": "Four Management Functions",
+              "details": "Planning sets objectives and determines actions; organizing assigns resources and responsibilities; leading motivates and guides people; controlling compares results against plans and corrects deviations."
+            },
+            {
+              "concept": "Management Levels",
+              "details": "Top managers set broad direction, middle managers translate strategy into departmental plans, and first-line managers supervise day-to-day operations."
+            }
+          ],
+          "activities": [
+            {
+              "id": "1.2-A",
+              "description": "Draw a simple organizational chart for a business and assign a management function to each level."
+            }
+          ],
+          "summary": "The management functions operate at all levels, but responsibilities vary."
         }
-      ]
+      ],
+      "unit_summary": "Management combines goal achievement with responsible use of resources through planning, organizing, leading and controlling."
+    },
+    {
+      "unit_number": 2,
+      "title": "Planning and Decision Making",
+      "unit_introduction": "Planning gives organizations direction by identifying objectives and selecting actions. Decision making supports managers in choosing among alternatives.",
+      "unit_objectives": [
+        "Describe the purpose and stages of planning.",
+        "Differentiate strategic, tactical and operational plans.",
+        "Apply a structured decision-making process."
+      ],
+      "topics": [
+        {
+          "topic_number": "2.1",
+          "title": "Planning and Types of Plans",
+          "objectives": [
+            "Explain why planning matters.",
+            "Distinguish strategic, tactical and operational planning."
+          ],
+          "key_concepts": [
+            {
+              "concept": "Planning Process",
+              "details": "Managers analyze the situation, set measurable objectives, identify alternatives, select actions, allocate resources, and monitor outcomes."
+            },
+            {
+              "concept": "Planning Horizons",
+              "details": "Strategic plans establish long-term direction; tactical plans translate strategy into departmental actions; operational plans define specific short-term tasks."
+            }
+          ],
+          "activities": [
+            {
+              "id": "2.1-A",
+              "description": "Write one SMART objective and a three-step action plan for a student project."
+            }
+          ],
+          "summary": "Effective planning connects objectives to resources, actions, and evaluation."
+        },
+        {
+          "topic_number": "2.2",
+          "title": "Managerial Decision Making",
+          "objectives": [
+            "Outline the decision-making process.",
+            "Recognize common decision-making limitations."
+          ],
+          "key_concepts": [
+            {
+              "concept": "Decision-Making Steps",
+              "details": "Define the problem, establish criteria, generate alternatives, evaluate options, select an option, implement it, and review results."
+            },
+            {
+              "concept": "Bounded Rationality",
+              "details": "Managers often make decisions with limited time, incomplete information, and cognitive constraints; therefore, they may choose satisfactory rather than optimal solutions."
+            }
+          ],
+          "activities": [
+            {
+              "id": "2.2-A",
+              "description": "Compare two possible solutions to a campus service problem using cost, time and expected benefit as criteria."
+            }
+          ],
+          "summary": "Structured decision making improves transparency and consistency."
+        }
+      ],
+      "unit_summary": "Planning establishes objectives and action paths, while decision making selects workable alternatives."
+    },
+    {
+      "unit_number": 3,
+      "title": "Organizing and Organizational Structure",
+      "unit_introduction": "Organizing arranges people, tasks and resources so that plans can be implemented. Organizational structure clarifies authority, accountability and coordination.",
+      "unit_objectives": [
+        "Explain division of work, departmentalization and delegation.",
+        "Compare centralized and decentralized decision making.",
+        "Identify strengths and limitations of common organizational structures."
+      ],
+      "topics": [
+        {
+          "topic_number": "3.1",
+          "title": "Principles of Organizing",
+          "objectives": [
+            "Explain specialization, authority and responsibility.",
+            "Describe delegation and span of control."
+          ],
+          "key_concepts": [
+            {
+              "concept": "Division of Work",
+              "details": "Specialization assigns tasks according to skills and expertise, potentially improving productivity while requiring coordination."
+            },
+            {
+              "concept": "Delegation",
+              "details": "Delegation assigns authority and responsibility for tasks while the manager remains accountable for overall results."
+            },
+            {
+              "concept": "Span of Control",
+              "details": "Span of control is the number of employees directly reporting to a manager; the appropriate span depends on task complexity and staff capability."
+            }
+          ],
+          "activities": [
+            {
+              "id": "3.1-A",
+              "description": "Design roles for a five-person project team and show who is responsible for each task."
+            }
+          ],
+          "summary": "Organizing clarifies responsibilities and supports coordination."
+        },
+        {
+          "topic_number": "3.2",
+          "title": "Organizational Structures",
+          "objectives": [
+            "Describe functional and divisional structures.",
+            "Contrast centralization and decentralization."
+          ],
+          "key_concepts": [
+            {
+              "concept": "Functional Structure",
+              "details": "Employees are grouped by specialist activities such as finance, marketing and operations. This supports expertise but may create coordination barriers."
+            },
+            {
+              "concept": "Divisional Structure",
+              "details": "Activities are grouped by product, region or customer group, improving local responsiveness but potentially duplicating resources."
+            },
+            {
+              "concept": "Centralization and Decentralization",
+              "details": "Centralization concentrates decisions at higher levels; decentralization distributes authority closer to operational teams."
+            }
+          ],
+          "activities": [
+            {
+              "id": "3.2-A",
+              "description": "Compare functional and divisional structures for a company operating in three regions."
+            }
+          ],
+          "summary": "Structure should reflect strategy, size, environment and coordination needs."
+        }
+      ],
+      "unit_summary": "Effective organizing matches roles, authority and structure to organizational objectives."
     }
   ]
 }

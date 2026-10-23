@@ -28,3 +28,6 @@
 
 /* Subject create/edit modal */
 .subject-editor{width:min(100%,560px)}.subject-editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.subject-editor-grid label{display:flex;flex-direction:column;gap:8px}.subject-editor textarea{min-height:85px;resize:vertical}.subject-editor .row{align-items:flex-start}@media(max-width:480px){.subject-editor-grid{grid-template-columns:1fr}}
+
+/* Structured Learning Library */
+.library-layout{display:grid;grid-template-columns:minmax(240px,1fr) minmax(0,2fr);gap:20px;align-items:start}.library-layout .card{min-width:0}.library-chapter{display:block;text-align:left;width:100%;background:#f1f5fc;color:#203a60;justify-content:flex-start}.library-chapter.selected{background:#dceaff;color:#174b99}.library-json{min-height:360px;font:13px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;resize:vertical;tab-size:2}.structured-notes{line-height:1.8;white-space:pre-wrap}.structured-notes h3{margin-top:20px}.structured-notes blockquote{border-left:3px solid #2868c6;padding:10px 18px;background:#f3f7ff;margin:16px 0}@media(max-width:850px){.library-layout{grid-template-columns:1fr}}

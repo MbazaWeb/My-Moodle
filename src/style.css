@@ -62,3 +62,12 @@
 .book-footer{border-top:1px solid #e8e9ed;margin-top:50px;padding-top:24px;display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap}
 @media(max-width:850px){.book-layout{grid-template-columns:1fr;gap:12px;padding:16px}.book-toc{position:static;padding:12px 0;display:flex;gap:6px;overflow-x:auto;align-items:center}.book-toc h3,.book-toc-progress{display:none}.book-toc-item{min-width:175px;max-width:230px}.book-paper{padding:30px 22px}.book-toolbar-title{align-items:flex-end}.book-completion{display:none}}
 @media(max-width:520px){.book-toolbar{padding:10px 14px}.book-toolbar-title strong{max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.book-footer button{flex:1}}
+
+/* Topic-focused book navigation */
+.book-toc-group{margin-bottom:6px}.book-subtopics{display:grid;gap:3px;margin:2px 0 12px 28px;padding-left:12px;border-left:2px solid #e1e9f4}
+.book-subtopic{display:block;text-align:left;border:0;background:transparent;color:#68778d;font-size:12px;line-height:1.55;padding:9px 11px;border-radius:7px;cursor:pointer}
+.book-subtopic.active{background:#dce9fb;color:#1b56a8;font-weight:700}
+.book-outline{margin-top:32px;display:grid;gap:10px}.book-outline h2{font-size:19px;margin-bottom:10px}.book-outline-link{display:block;width:100%;text-align:left;border:1px solid #e4ebf5;border-radius:9px;background:#f9fbff;padding:15px 18px;color:#245b9d;font-weight:600;cursor:pointer}
+.book-outline-link:hover,.book-subtopic:hover{background:#e9f2ff}.book-summary{border-top:1px solid #e7eaf0;margin-top:38px;padding-top:22px;font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.8}
+.book-summary h2{font-family:inherit;font-size:22px}
+@media(max-width:850px){.book-toc-group{flex-shrink:0;min-width:200px;max-width:260px}.book-subtopics{max-height:220px;overflow:auto}.book-toc{align-items:flex-start}}

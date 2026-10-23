@@ -12,7 +12,7 @@ type ExamItem={id:string;subject_id:string;title:string;starts_at:string;ends_at
 const sb=supabase!;
 const storage='shared-study-materials';
 export default function CloudApp(){
- const [user,setUser]=useState<User|null>(null),[recovery,setRecovery]=useState(false),[loading,setLoading]=useState(true),[authMode,setAuthMode]=useState<'login'|'register'>('login');
+ const [introStage,setIntroStage]=useState<'splash'|'landing'|'auth'>('splash');const [splashDone,setSplashDone]=useState(false);const [user,setUser]=useState<User|null>(null),[recovery,setRecovery]=useState(false),[loading,setLoading]=useState(true),[authMode,setAuthMode]=useState<'login'|'register'>('login');
  const [name,setName]=useState(''),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[message,setMessage]=useState('');
  const [profile,setProfile]=useState<StudentProfile|null>(null);
  const [profileLoading,setProfileLoading]=useState(false);
@@ -30,6 +30,7 @@ export default function CloudApp(){
  const [librarySyncStatus,setLibrarySyncStatus]=useState('');
  const [profileModal,setProfileModal]=useState(false),[profileName,setProfileName]=useState(''),[profileEmail,setProfileEmail]=useState(''),[profilePhone,setProfilePhone]=useState(''),[profileInstitution,setProfileInstitution]=useState(''),[profileProgramme,setProfileProgramme]=useState(''),[profileYear,setProfileYear]=useState(1),[profileSemester,setProfileSemester]=useState(1),[profileNotice,setProfileNotice]=useState('');
  const admin=profile?.role==='admin';
+ useEffect(()=>{const timeout=window.setTimeout(()=>setSplashDone(true),1300);return()=>window.clearTimeout(timeout)},[]);
  useEffect(()=>{let active=true;void sb.auth.getSession().then(({data,error})=>{if(active){setUser(data.session?.user??null);if(error)setMessage(error.message);setLoading(false)}}).catch(()=>{if(active){setMessage('Unable to connect to authentication. Please try again.');setLoading(false)}});const {data:{subscription}}=sb.auth.onAuthStateChange((event,session)=>{if(active){if(event==='PASSWORD_RECOVERY')setRecovery(true);setUser(session?.user??null);setLoading(false)}});return()=>{active=false;subscription.unsubscribe()}},[]);
  async function refresh(current:User){setError('');const [p,s,m,r,pr,a,sub,sl,ci,ex]=await Promise.all([
  sb.from('student_profiles').select('id,full_name,role,phone,institution,programme,study_year,study_semester').eq('id',current.id).single(),
@@ -146,6 +147,8 @@ async function saveProfile(e:React.FormEvent){e.preventDefault();if(!user||busy)
  const overallPercent=studyModules.length?Math.round(overallCompleted/studyModules.length*100):0;
  const nav=admin?([['Dashboard',LayoutDashboard],['Admin Console',ShieldCheck],['Library',BookOpen],['Student Management',GraduationCap],['Settings',SettingsIcon]] as const):([['Dashboard',LayoutDashboard],['My Courses',BookOpen],['Calendar',CalendarDays],['Settings',SettingsIcon]] as const);
  const activePage=admin?(['Dashboard','Admin Console','Library','Student Management','Settings'].includes(page)?page:'Dashboard'):(['Dashboard','My Courses','Calendar','Settings'].includes(page)?page:'Dashboard');
+ if(!splashDone||loading)return <div className="intro-splash" role="status" aria-label="Opening My Moodle"><img src="/favicon.svg" alt="My Moodle" className="splash-logo"/><strong>My Moodle</strong><span>Your learning companion</span></div>;
+ if(!user&&!recovery&&introStage==='splash')return <main className="intro-landing"><div className="landing-content"><img src="/favicon.svg" alt="" className="landing-logo"/><div className="landing-illustration" aria-hidden="true"><BookOpen size={112} strokeWidth={1.2}/><GraduationCap size={50} strokeWidth={1.4}/></div><span className="landing-eyebrow">LEARN ANYTIME · ANYWHERE</span><h1>My easy study book anywhere</h1><p>All your subjects, study notes and assignments in one simple place. Learn comfortably from your phone, wherever you are.</p><button className="landing-start" onClick={()=>setIntroStage('auth')}>Get Started <ChevronRight size={20}/></button></div><footer>My Moodle · PlayGo Tanzania</footer></main>;
  if(loading)return <div className="auth-wrap"><div className="card">Loading My Moodle…</div></div>;
  if(user&&profileLoading)return <div className="auth-wrap"><div className="card">Loading your workspace…</div></div>;
  if(recovery)return <div className="auth-wrap"><form className="auth-card stack" onSubmit={e=>void changePassword(e)}><GraduationCap size={38}/><h1>Set new password</h1><label>New password</label><input required type="password" minLength={6} autoComplete="new-password" value={password} onChange={e=>setPassword(e.target.value)}/>{message&&<p role="status">{message}</p>}<button disabled={busy} type="submit">{busy?'Saving…':'Update password'}</button></form></div>;

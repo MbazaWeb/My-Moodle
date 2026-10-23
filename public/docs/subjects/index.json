@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "subjects": [
+    {
+      "code": "POM101",
+      "title": "Principles of Management",
+      "year": 1,
+      "semester": 1,
+      "description": "Management foundations, planning, organizing, directing and controlling.",
+      "file": "principles-of-management.json"
+    }
+  ]
+}

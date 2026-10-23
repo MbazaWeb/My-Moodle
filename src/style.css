@@ -146,3 +146,29 @@ html,body,#root{width:100%;max-width:100%;min-width:0}body{overflow-x:clip}
  .book-paper table{display:block;overflow-x:auto}
  .book-paper button{max-width:100%;white-space:normal}
 }
+
+/* Phone-first onboarding and compact authentication */
+.intro-splash{min-height:100dvh;background:linear-gradient(150deg,#122b58,#296bc2);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:24px}
+.splash-logo{width:88px;height:88px;filter:drop-shadow(0 10px 24px #071f4350);animation:splash-arrive .55s ease-out both}
+.intro-splash strong{font-size:29px;letter-spacing:-.03em}.intro-splash span{font-size:13px;color:#d4e4ff}
+@keyframes splash-arrive{from{opacity:0;transform:scale(.86) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.intro-landing{min-height:100dvh;display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:clamp(22px,5vw,52px);background:linear-gradient(165deg,#f5f9ff,#e6f0ff);color:#152a4b}
+.landing-content{width:min(100%,460px);display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin:auto}
+.landing-logo{width:50px;height:50px}.landing-illustration{height:clamp(145px,27vh,245px);width:100%;display:flex;align-items:center;justify-content:center;gap:14px;color:#2868c6;background:linear-gradient(135deg,#e0edff,#f8fbff);border-radius:28px}
+.landing-illustration svg:last-child{align-self:center;transform:translateY(-28px)}
+.landing-eyebrow{font-size:11px;font-weight:800;letter-spacing:.12em;color:#376bb2}
+.intro-landing h1{font-size:clamp(32px,7vw,45px);line-height:1.12;letter-spacing:-.04em;margin:0;max-width:390px}
+.intro-landing p{font-size:15px;line-height:1.65;color:#60718d;margin:0}
+.landing-start{width:100%;min-height:52px;justify-content:space-between;padding:13px 20px;font-size:16px;margin-top:9px}
+.intro-landing footer{color:#8a99af;font-size:11px;text-align:center;padding-top:18px}
+@media(max-width:680px){
+ .auth-wrap{min-height:100dvh;align-items:center;padding:12px;background:linear-gradient(160deg,#e7f0ff,#f8fbff)}
+ .auth-card{width:min(100%,390px);max-height:calc(100dvh - 24px);overflow-y:auto;padding:clamp(18px,5vw,26px);border-radius:16px;box-shadow:0 12px 32px #183a701c;gap:8px}
+ .auth-card>svg{width:29px;height:29px}.auth-card h1{font-size:24px}.auth-card h2{font-size:18px;margin:5px 0}
+ .auth-card p{font-size:12px;line-height:1.45;margin:0 0 5px}
+ .auth-card label{font-size:12px}.auth-card input{padding:10px 12px;min-height:42px;font-size:16px}
+ .auth-card button{padding:10px 12px;min-height:42px;font-size:13px}
+ .landing-content{gap:13px}.intro-landing{padding:22px 20px}
+}
+@media(max-height:680px) and (max-width:680px){.auth-wrap{align-items:flex-start}.landing-illustration{height:120px}.landing-content{gap:9px}}
+@media(prefers-reduced-motion:reduce){.splash-logo{animation:none}}

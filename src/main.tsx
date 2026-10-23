@@ -2,6 +2,8 @@ import React,{useEffect,useMemo,useState} from 'react';
 import{createRoot}from'react-dom/client';
 import {GraduationCap,LayoutDashboard,BookOpen,ClipboardList,PenLine,ChartNoAxesCombined,CalendarDays,Settings as SettingsIcon,Plus,ChevronRight,Search,Trash2,CheckCircle2,FileText} from 'lucide-react';
 import './style.css';
+import CloudApp from './CloudApp';
+import {configured} from './supabase';
 type Module={id:string;title:string;notes:string;done:boolean};
 type Subject={id:string;title:string;description:string;year:number;semester:number;modules:Module[]};
 type Profile={institution:string;programme:string;years:number;semesters:number};
@@ -56,4 +58,4 @@ function App(){
  {page==='Settings'&&<div className="card stack"><h2>Programme settings</h2><label>Institution</label><input value={data.profile.institution} onChange={e=>update(d=>({...d,profile:{...d.profile,institution:e.target.value}}))}/><label>Programme</label><input value={data.profile.programme} onChange={e=>update(d=>({...d,profile:{...d.profile,programme:e.target.value}}))}/><label>Years</label><input type="number" min="1" max="8" value={data.profile.years} onChange={e=>update(d=>({...d,profile:{...d.profile,years:Math.max(1,Math.min(8,Number(e.target.value)||1))}}))}/><label>Semesters per year</label><input type="number" min="1" max="4" value={data.profile.semesters} onChange={e=>update(d=>({...d,profile:{...d.profile,semesters:Math.max(1,Math.min(4,Number(e.target.value)||1))}}))}/><div className="actions"><button onClick={exportData}>Export backup</button><label className="pill">Restore JSON backup <input type="file" accept=".json,application/json" onChange={e=>{const f=e.target.files?.[0];if(f)void importData(f)}}/></label></div><p className="muted small">Data is stored only in this browser. Export backups regularly.</p></div>}
  </div></main></div>;
 }
-createRoot(document.getElementById('root')!).render(<React.StrictMode><App/></React.StrictMode>);
+createRoot(document.getElementById('root')!).render(<React.StrictMode>{configured?<CloudApp/>:<App/>}</React.StrictMode>);

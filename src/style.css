@@ -37,3 +37,28 @@
 
 /* Student subject units and chapter navigation */
 .unit-list{display:grid;gap:16px}.unit-card{padding:22px}.unit-header{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.unit-number{width:54px;height:54px;border-radius:14px;background:#eaf2ff;color:#2769c5;display:grid;place-items:center;font-weight:800;font-size:21px;flex-shrink:0}.unit-info{flex:1;min-width:200px}.unit-info h3{margin:5px 0 8px}.unit-info p{margin:0}.unit-eyebrow{font-size:11px;font-weight:800;letter-spacing:.1em;color:#3573ce}.unit-topics{border-top:1px solid #edf1f7;margin-top:18px;padding-top:12px;display:grid;gap:10px}.unit-topic{display:flex;align-items:center;gap:10px;color:#506580;font-size:13px}.unit-topic svg{flex-shrink:0;color:#5487d2}@media(max-width:650px){.unit-header{align-items:flex-start}.unit-header .actions{width:100%}.unit-header .actions button{flex:1}}
+
+/* Dedicated book-reading experience */
+.book-reader{min-height:100vh;background:#f4f1e9;color:#1b2639}
+.book-toolbar{height:76px;background:#fff;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px clamp(20px,4vw,64px);border-bottom:1px solid #e3e5e9;position:sticky;top:0;z-index:10}
+.book-toolbar-title{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:14px}.book-toolbar-title span{color:#74829a;font-size:12px}
+.book-completion{font-size:12px;color:#2866c3;font-weight:700}
+.book-layout{max-width:1460px;margin:auto;display:grid;grid-template-columns:250px minmax(0,1fr);gap:38px;padding:36px clamp(20px,4vw,60px);align-items:start}
+.book-toc{position:sticky;top:112px;padding:20px 0}.book-toc h3{font-size:13px;text-transform:uppercase;letter-spacing:.09em;color:#7c8798;margin:0 0 18px}
+.book-toc-item{width:100%;display:flex;align-items:flex-start;text-align:left;gap:12px;padding:13px 12px;border:0;background:transparent;color:#43536d;border-radius:10px;font-size:13px;line-height:1.5;cursor:pointer}
+.book-toc-item.selected{background:#e5ecf8;color:#174f9d;font-weight:700}.book-toc-item>span:first-child{font-weight:800}
+.book-toc-progress{padding:20px 12px;color:#54647d;font-size:12px}.book-toc-progress .progress{margin-top:12px}
+.book-paper{max-width:920px;width:100%;min-height:calc(100vh - 160px);background:#fff;border:1px solid #e6e4df;border-radius:12px;padding:clamp(26px,6vw,80px);box-shadow:0 8px 32px rgba(40,46,61,.045)}
+.book-paper-meta{font-size:12px;letter-spacing:.16em;font-weight:800;color:#356cba;text-transform:uppercase}
+.book-paper h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(30px,3vw,44px);line-height:1.18;color:#17243b;margin:20px 0 26px}
+.book-intro{font-family:Georgia,'Times New Roman',serif;font-size:19px;line-height:1.85;color:#516078;border-left:3px solid #b6c9e6;padding-left:22px}
+.book-objectives{margin:35px 0;padding:24px 30px;background:#f5f8fc;border-radius:10px}
+.book-objectives h2,.book-resources h2{font-size:17px;margin:0 0 15px;color:#1c365a}
+.book-objectives li{line-height:1.8;margin:6px 0}
+.book-body{font-family:Georgia,'Times New Roman',serif;font-size:18px;line-height:1.95;color:#283244}
+.book-body h2{font-family:Georgia,'Times New Roman',serif;font-size:25px;line-height:1.35;color:#17243b;margin:42px 0 15px}
+.book-body p{margin:0 0 22px}.book-body ul{margin:0 0 16px;padding-left:24px}.book-body blockquote{border-left:3px solid #91afd5;padding-left:20px;font-style:italic}
+.book-resources{display:grid;gap:12px;margin:36px 0}.book-resources button{justify-self:start}
+.book-footer{border-top:1px solid #e8e9ed;margin-top:50px;padding-top:24px;display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap}
+@media(max-width:850px){.book-layout{grid-template-columns:1fr;gap:12px;padding:16px}.book-toc{position:static;padding:12px 0;display:flex;gap:6px;overflow-x:auto;align-items:center}.book-toc h3,.book-toc-progress{display:none}.book-toc-item{min-width:175px;max-width:230px}.book-paper{padding:30px 22px}.book-toolbar-title{align-items:flex-end}.book-completion{display:none}}
+@media(max-width:520px){.book-toolbar{padding:10px 14px}.book-toolbar-title strong{max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.book-footer button{flex:1}}

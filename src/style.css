@@ -349,3 +349,23 @@ html[data-theme=dark] .instructor-management .instructor-status.inactive{backgro
 html[data-theme=dark] .manual-draft .draft-topic{border-color:#425b7b;background:#20334e;color:#e8eef9}
 html[data-theme=dark] .manual-draft .draft-import-box{border-color:#607b9f;color:#e8eef9}
 @media(max-width:680px){.manual-draft .draft-steps button{flex:1}.manual-draft .draft-topic{padding:12px}.manual-draft .row{flex-wrap:wrap}}
+
+
+/* Registered Instructor cards: read-only by default, actions on demand */
+.instructor-management .instructor-record{padding:0;overflow:hidden;gap:0}
+.instructor-management .instructor-record-header{width:100%;display:flex;align-items:center;gap:14px;padding:18px 20px;border:0;background:transparent;color:inherit;text-align:left;cursor:pointer}
+.instructor-management .instructor-record-header:hover{background:rgba(90,120,170,.07)}
+.instructor-management .instructor-record-header:focus-visible{outline:3px solid #3b82f6;outline-offset:-3px}
+.instructor-management .instructor-avatar{width:46px;height:46px;flex-shrink:0;display:grid;place-items:center;border-radius:13px;background:#e2eafd;color:#204a91;font-weight:800;letter-spacing:.04em}
+.instructor-management .instructor-identity{min-width:0;display:grid;gap:3px;flex:1}
+.instructor-management .instructor-identity strong{font-size:1rem}
+.instructor-management .instructor-identity small{color:var(--muted,#6b7280);overflow-wrap:anywhere}
+.instructor-management .instructor-expand-icon{font-size:1.3rem;color:var(--muted,#6b7280)}
+.instructor-management .instructor-record-body{border-top:1px solid var(--border,#dce4ee);padding:18px 20px}
+.instructor-management .instructor-record-actions{display:flex;gap:8px;flex-wrap:wrap}
+.instructor-management .instructor-assigned-row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.instructor-management .instructor-manage-panel{border:1px solid var(--border,#dce4ee);border-radius:12px;padding:16px}
+.instructor-management .instructor-manage-panel .row{flex-wrap:wrap}
+.instructor-management .instructor-manage-panel select{min-width:170px;flex:1}
+html[data-theme=dark] .instructor-management .instructor-avatar{background:#24436d;color:#d9e8ff}
+@media(max-width:600px){.instructor-management .instructor-record-header{padding:14px;gap:10px;flex-wrap:wrap}.instructor-management .instructor-avatar{width:40px;height:40px}.instructor-management .instructor-status{margin-left:auto}.instructor-management .instructor-record-body{padding:14px}.instructor-management .instructor-expand-icon{display:none}.instructor-management .instructor-assigned-row{flex-wrap:wrap}}

@@ -235,3 +235,35 @@ html[data-theme=dark] .profile-modal :is(h2,label,p,strong){color:#edf3ff}
 html[data-theme=dark] .profile-modal :is(input,textarea,select){background:#112039;color:#edf3ff;border-color:#526c8e}
 html[data-theme=dark] .profile-modal :is(input,textarea,select)::placeholder{color:#a9bbd4}
 html[data-theme=dark] .profile-modal :is(input,textarea,select):focus-visible{outline:2px solid #85b5ff;outline-offset:2px}
+
+
+/* Reader-specific dark palette: readable text, panels, navigation and controls */
+html[data-theme=dark] .book-reader{background:#10192a;color:#e8eef9}
+html[data-theme=dark] .book-toolbar{background:#17263c;border-color:#334761;color:#e8eef9}
+html[data-theme=dark] .book-toolbar-title,html[data-theme=dark] .book-toolbar-title strong{color:#f2f6ff}
+html[data-theme=dark] .book-toolbar-title span{color:#b5c6e0}
+html[data-theme=dark] .book-completion{color:#93c5fd}
+html[data-theme=dark] .book-toc{background:#1a2940;color:#e8eef9}
+html[data-theme=dark] .book-toc h3{color:#b9c9e2}
+html[data-theme=dark] .book-toc-item{color:#c9d7ec}
+html[data-theme=dark] .book-toc-item:hover{background:#263c5a;color:#fff}
+html[data-theme=dark] .book-toc-item.selected{background:#304b72;color:#f5f9ff}
+html[data-theme=dark] .book-subtopics{border-left-color:#506683}
+html[data-theme=dark] .book-subtopic{color:#b8c9e2}
+html[data-theme=dark] .book-subtopic:hover{background:#263c5a;color:#fff}
+html[data-theme=dark] .book-subtopic.active{background:#365781;color:#fff}
+html[data-theme=dark] .book-toc-progress{color:#b9c9e2}
+html[data-theme=dark] .book-paper{background:#1a2940;color:#e7edf8;border-color:#3a506c}
+html[data-theme=dark] .book-paper-meta{color:#8fc0ff}
+html[data-theme=dark] .book-paper :is(h1,h2,h3){color:#f2f6ff}
+html[data-theme=dark] .book-paper :is(p,li,.book-body,.book-intro,.book-summary){color:#d7e3f4}
+html[data-theme=dark] .book-intro{border-left-color:#88b8f6}
+html[data-theme=dark] .book-objectives{background:#263b58;color:#e7edf8;border:1px solid #425b7b}
+html[data-theme=dark] .book-objectives :is(h2,p,li,strong){color:#e7edf8}
+html[data-theme=dark] .book-outline-link{background:#243a57;border-color:#49617f;color:#dcecff}
+html[data-theme=dark] .book-outline-link:hover{background:#304c70;color:#fff}
+html[data-theme=dark] .book-summary,html[data-theme=dark] .book-footer{border-color:#435975}
+html[data-theme=dark] .book-body blockquote{border-left-color:#8dbbfa;color:#d7e3f4}
+html[data-theme=dark] .book-paper a{color:#a7ccff}
+html[data-theme=dark] .book-paper :is(button,a):focus-visible,
+html[data-theme=dark] .book-toc :is(button,a):focus-visible{outline:2px solid #93c5fd;outline-offset:2px}

@@ -1,0 +1,281 @@
+{
+  "document": {
+    "title": "Business Communication Skills and Office Practice",
+    "authors": [],
+    "publisher": "My Moodle original study guide",
+    "year": 2026,
+    "license": "Original educational content; not an official institutional syllabus"
+  },
+  "units": [
+    {
+      "unit_number": 1,
+      "title": "Introduction to Business Communication",
+      "unit_introduction": "This unit introduces introduction to business communication in everyday workplace settings.",
+      "unit_objectives": [
+        "Explain the main concepts of introduction to business communication.",
+        "Apply these concepts in realistic office tasks."
+      ],
+      "topics": [
+        {
+          "topic_number": "1.1",
+          "title": "Communication Process",
+          "objectives": [
+            "Describe communication process.",
+            "Demonstrate practical workplace application."
+          ],
+          "key_concepts": [
+            {
+              "concept": "Communication Process",
+              "details": "Sender, message, channel, receiver, feedback and noise."
+            }
+          ],
+          "activities": [
+            {
+              "id": "1.1-A",
+              "description": "Prepare a workplace example demonstrating communication process and explain the steps you would take."
+            }
+          ],
+          "summary": "Effective communication process requires clear procedures, professionalism and practice."
+        },
+        {
+          "topic_number": "1.2",
+          "title": "Types and Barriers",
+          "objectives": [
+            "Describe types and barriers.",
+            "Demonstrate practical workplace application."
+          ],
+          "key_concepts": [
+            {
+              "concept": "Types and Barriers",
+              "details": "Formal and informal communication; language, distractions and assumptions."
+            }
+          ],
+          "activities": [
+            {
+              "id": "1.2-A",
+              "description": "Prepare a workplace example demonstrating types and barriers and explain the steps you would take."
+            }
+          ],
+          "summary": "Effective types and barriers requires clear procedures, professionalism and practice."
+        }
+      ],
+      "unit_summary": "Review introduction to business communication and apply the principles in a workplace scenario."
+    },
+    {
+      "unit_number": 2,
+      "title": "Written Business Communication",
+      "unit_introduction": "This unit introduces written business communication in everyday workplace settings.",
+      "unit_objectives": [
+        "Explain the main concepts of written business communication.",
+        "Apply these concepts in realistic office tasks."
+      ],
+      "topics": [
+        {
+          "topic_number": "2.1",
+          "title": "Letters and Emails",
+          "objectives": [
+            "Describe letters and emails.",
+            "Demonstrate practical workplace application."
+          ],
+          "key_concepts": [
+            {
+              "concept": "Letters and Emails",
+              "details": "Structure, tone, clarity, subject lines and proofreading."
+            }
+          ],
+          "activities": [
+            {
+              "id": "2.1-A",
+              "description": "Prepare a workplace example demonstrating letters and emails and explain the steps you would take."
+            }
+          ],
+          "summary": "Effective letters and emails requires clear procedures, professionalism and practice."
+        },
+        {
+          "topic_number": "2.2",
+          "title": "Memos, Reports and Minutes",
+          "objectives": [
+            "Describe memos, reports and minutes.",
+            "Demonstrate practical workplace application."
+          ],
+          "key_concepts": [
+            {
+              "concept": "Memos, Reports and Minutes",
+              "details": "Internal memos, report structure, decisions and action points."
+            }
+          ],
+          "activities": [
+            {
+              "id": "2.2-A",
+              "description": "Prepare a workplace example demonstrating memos, reports and minutes and explain the steps you would take."
+            }
+          ],
+          "summary": "Effective memos, reports and minutes requires clear procedures, professionalism and practice."
+        }
+      ],
+      "unit_summary": "Review written business communication and apply the principles in a workplace scenario."
+    },
+    {
+      "unit_number": 3,
+      "title": "Oral Communication",
+      "unit_introduction": "This unit introduces oral communication in everyday workplace settings.",
+      "unit_objectives": [
+        "Explain the main concepts of oral communication.",
+        "Apply these concepts in realistic office tasks."
+      ],
+      "topics": [
+        {
+          "topic_number": "3.1",
+          "title": "Presentations and Meetings",
+          "objectives": [
+            "Describe presentations and meetings.",
+            "Demonstrate practical workplace application."
+          ],
+          "key_concepts": [
+            {
+              "concept": "Presentations and Meetings",
+              "details": "Planning, active listening, agendas and participation."
+            }
+          ],
+          "activities": [
+            {
+              "id": "3.1-A",
+              "description": "Prepare a workplace example demonstrating presentations and meetings and explain the steps you would take."
+            }
+          ],
+          "summary": "Effective presentations and meetings requires clear procedures, professionalism and practice."
+        },
+        {
+          "topic_number": "3.2",
+          "title": "Telephone and Customer Service",
+          "objectives": [
+            "Describe telephone and customer service.",
+            "Demonstrate practical workplace application."
+          ],
+          "key_concepts": [
+            {
+              "concept": "Telephone and Customer Service",
+              "details": "Professional greetings, message-taking, empathy and complaint handling."
+            }
+          ],
+          "activities": [
+            {
+              "id": "3.2-A",
+              "description": "Prepare a workplace example demonstrating telephone and customer service and explain the steps you would take."
+            }
+          ],
+          "summary": "Effective telephone and customer service requires clear procedures, professionalism and practice."
+        }
+      ],
+      "unit_summary": "Review oral communication and apply the principles in a workplace scenario."
+    },
+    {
+      "unit_number": 4,
+      "title": "Office Practice and Administration",
+      "unit_introduction": "This unit introduces office practice and administration in everyday workplace settings.",
+      "unit_objectives": [
+        "Explain the main concepts of office practice and administration.",
+        "Apply these concepts in realistic office tasks."
+      ],
+      "topics": [
+        {
+          "topic_number": "4.1",
+          "title": "Office Functions",
+          "objectives": [
+            "Describe office functions.",
+            "Demonstrate practical workplace application."
+          ],
+          "key_concepts": [
+            {
+              "concept": "Office Functions",
+              "details": "Information flow, scheduling, coordination and workflow."
+            }
+          ],
+          "activities": [
+            {
+              "id": "4.1-A",
+              "description": "Prepare a workplace example demonstrating office functions and explain the steps you would take."
+            }
+          ],
+          "summary": "Effective office functions requires clear procedures, professionalism and practice."
+        },
+        {
+          "topic_number": "4.2",
+          "title": "Filing and Records Management",
+          "objectives": [
+            "Describe filing and records management.",
+            "Demonstrate practical workplace application."
+          ],
+          "key_concepts": [
+            {
+              "concept": "Filing and Records Management",
+              "details": "Alphabetical and numerical filing, retrieval, retention and confidentiality."
+            }
+          ],
+          "activities": [
+            {
+              "id": "4.2-A",
+              "description": "Prepare a workplace example demonstrating filing and records management and explain the steps you would take."
+            }
+          ],
+          "summary": "Effective filing and records management requires clear procedures, professionalism and practice."
+        }
+      ],
+      "unit_summary": "Review office practice and administration and apply the principles in a workplace scenario."
+    },
+    {
+      "unit_number": 5,
+      "title": "Office Technology and Professional Conduct",
+      "unit_introduction": "This unit introduces office technology and professional conduct in everyday workplace settings.",
+      "unit_objectives": [
+        "Explain the main concepts of office technology and professional conduct.",
+        "Apply these concepts in realistic office tasks."
+      ],
+      "topics": [
+        {
+          "topic_number": "5.1",
+          "title": "Office Tools and Security",
+          "objectives": [
+            "Describe office tools and security.",
+            "Demonstrate practical workplace application."
+          ],
+          "key_concepts": [
+            {
+              "concept": "Office Tools and Security",
+              "details": "Word processing, spreadsheets, email, backups and access control."
+            }
+          ],
+          "activities": [
+            {
+              "id": "5.1-A",
+              "description": "Prepare a workplace example demonstrating office tools and security and explain the steps you would take."
+            }
+          ],
+          "summary": "Effective office tools and security requires clear procedures, professionalism and practice."
+        },
+        {
+          "topic_number": "5.2",
+          "title": "Time Management and Ethics",
+          "objectives": [
+            "Describe time management and ethics.",
+            "Demonstrate practical workplace application."
+          ],
+          "key_concepts": [
+            {
+              "concept": "Time Management and Ethics",
+              "details": "Prioritization, punctuality, confidentiality, integrity and workplace safety."
+            }
+          ],
+          "activities": [
+            {
+              "id": "5.2-A",
+              "description": "Prepare a workplace example demonstrating time management and ethics and explain the steps you would take."
+            }
+          ],
+          "summary": "Effective time management and ethics requires clear procedures, professionalism and practice."
+        }
+      ],
+      "unit_summary": "Review office technology and professional conduct and apply the principles in a workplace scenario."
+    }
+  ]
+}

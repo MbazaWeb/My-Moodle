@@ -11,7 +11,7 @@ type Progress={module_id:string;student_id:string};
 type Module={id:string;subject_id:string};
 const sb=supabase!;
 
-export default function LearningWorkspace({mode,subjects,userId,admin,onRefresh}:{mode:'studio'|'workload';subjects:SharedSubject[];userId:string;admin:boolean;onRefresh:()=>void}){
+export default function LearningWorkspace({mode,subjects,userId,admin,onRefresh,studyList=[]}:{mode:'studio'|'workload';subjects:SharedSubject[];userId:string;admin:boolean;onRefresh:()=>void;studyList?:string[]}){
  const [work,setWork]=useState<Work[]>([]),[answers,setAnswers]=useState<Answer[]>([]),[posts,setPosts]=useState<Post[]>([]),[teachers,setTeachers]=useState<Teacher[]>([]),[people,setPeople]=useState<Learner[]>([]),[enrolled,setEnrolled]=useState<Enrolled[]>([]),[progress,setProgress]=useState<Progress[]>([]),[modules,setModules]=useState<Module[]>([]);
  const [subject,setSubject]=useState(''),[kind,setKind]=useState<Work['kind']>('coursework'),[title,setTitle]=useState(''),[instructions,setInstructions]=useState(''),[due,setDue]=useState(''),[maxScore,setMaxScore]=useState(100),[newPost,setNewPost]=useState(''),[responses,setResponses]=useState<Record<string,string>>({}),[marks,setMarks]=useState<Record<string,string>>({}),[feedback,setFeedback]=useState<Record<string,string>>({}),[notice,setNotice]=useState(''),[loading,setLoading]=useState(false);
  const refresh=useCallback(async()=>{setLoading(true);const [w,a,p,t,e,pr,m]=await Promise.all([
@@ -27,7 +27,7 @@ export default function LearningWorkspace({mode,subjects,userId,admin,onRefresh}
  setLoading(false)},[mode]);
  useEffect(()=>{void refresh()},[refresh]);
  const managed=admin?subjects:subjects.filter(s=>teachers.some(t=>t.subject_id===s.id&&t.instructor_id===userId));
- const shown=mode==='studio'?managed:subjects.filter(s=>s.is_published);
+ const shown=mode==='studio'?managed:subjects.filter(s=>s.is_published&&studyList.includes(s.id));
  const activeSubject=shown.find(s=>s.id===subject)||shown[0];
  const workItems=work.filter(w=>shown.some(s=>s.id===w.subject_id)&&(!activeSubject||w.subject_id===activeSubject.id));
  const submit=async(fn:()=>PromiseLike<{error:{message:string}|null}>,success:string)=>{setNotice('');const result=await fn();if(result.error)setNotice(result.error.message);else{setNotice(success);await refresh();onRefresh()}};

@@ -6,4 +6,4 @@ export const supabase=url && key ? createClient(url,key) : null;
 export type SharedSubject={id:string;title:string;code:string|null;description:string;year:number;semester:number;is_published:boolean};
 export type SharedModule={id:string;subject_id:string;title:string;notes:string;content_json:{version:number;blocks:Array<{type:string;text:string}>};position:number};
 export type Resource={id:string;module_id:string;title:string;storage_path:string;mime_type:string|null};
-export type StudentProfile={id:string;full_name:string;role:'student'|'admin';phone:string|null;institution:string|null;programme:string|null;study_year:number|null;study_semester:number|null};
+export type StudentProfile={id:string;full_name:string;role:'student'|'instructor'|'admin';phone:string|null;institution:string|null;programme:string|null;study_year:number|null;study_semester:number|null};

@@ -13,7 +13,7 @@ export default function SubjectImporter({subject,onSaved}:{subject:SharedSubject
    const {data:job,error:jobError}=await sb.from('study_import_jobs').insert({subject_id:subject.id,instructor_id:session.user.id,filename:file.name,status:'processing',progress:0}).select('id').single();
    if(jobError)throw jobError;setJobId(job.id);
    const form=new FormData();form.append('subject_id',subject.id);form.append('file',file);
-   const response=await fetch(import.meta.env.VITE_SUPABASE_URL+'/functions/v1/subject-import',{method:'POST',headers:{Authorization:'Bearer '+session.access_token,apikey:import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY||import.meta.env.VITE_SUPABASE_ANON_KEY},body:form});
+   const response=await fetch(import.meta.env.VITE_SUPABASE_URL+'/functions/v1/subject-import',{method:'POST',headers:{Authorization:'Bearer '+session.access_token,apikey:String(import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY||import.meta.env.VITE_SUPABASE_ANON_KEY||'')},body:form});
    const result=await response.json();if(!response.ok)throw Error(result.error||'Conversion failed');
    if(!Array.isArray(result.chapters)||!result.chapters.length)throw Error('No chapters found.');
    setChapters(result.chapters);setProgress(100);setCurrent(result.chapters.length+' chapters extracted. Review before saving.');setPhase('preview');

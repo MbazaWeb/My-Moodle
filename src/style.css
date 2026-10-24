@@ -196,3 +196,23 @@ html,body,#root{width:100%;max-width:100%;min-width:0}body{overflow-x:clip}
 .welcome-academic-details strong{font-size:15px;line-height:1.4;color:#fff;overflow-wrap:anywhere}
 @media(max-width:900px){.welcome-academic-details{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}}
 @media(max-width:400px){.welcome-academic-details>div{padding:10px}.welcome-academic-details strong{font-size:13px}}
+
+/* Personalization */
+.settings-sections{display:grid;gap:16px;max-width:900px}.settings-module h2{margin:0}.settings-module p{margin:5px 0 0}.settings-option{display:grid;gap:9px}.settings-option>label{font-weight:650;font-size:14px}.settings-option select{max-width:380px}.settings-option input[type=range]{max-width:380px;accent-color:#2868c6}.settings-reading-preview{font-size:var(--reader-font-size,16px);padding:14px 16px;background:#f5f8ff;border-radius:9px;line-height:1.7}.settings-checkbox{display:flex;align-items:center;gap:10px;font-weight:550}.settings-checkbox input{width:18px;height:18px;accent-color:#2868c6}
+.book-paper .book-body,.book-paper .book-intro,.book-paper .book-summary p,.book-paper .book-objectives li{font-size:var(--reader-font-size,16px);line-height:1.85}
+html[data-reduce-motion=true] *,html[data-reduce-motion=true] *::before,html[data-reduce-motion=true] *::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+html[data-theme=dark]{color-scheme:dark}
+html[data-theme=dark] body{background:#10192a;color:#e7edf8}
+html[data-theme=dark] :is(.topbar,.card,.stat,.course-card,.book-paper,.book-toc,.reader-annotations,.reader-annotation-editor,.reader-annotation-entry,.unit-card,.calendar-panel,.mobile-bottom-nav,.settings-reading-preview){background:#1a2940;color:#e7edf8;border-color:#334761}
+html[data-theme=dark] :is(.main,.content,.shell,.book-reader,.book-layout){color:#e7edf8}
+html[data-theme=dark] :is(.crumb strong,.section-head h1,.section-head h2,.card h2,.card h3,.stat strong,.course-card,.unit-card h3,.book-paper h1,.book-paper h2,.reader-annotations h2){color:#f1f5ff}
+html[data-theme=dark] :is(.muted,.course-body p,.course-foot,.stat-top,.crumb,.section-head p,.reader-annotations .muted){color:#a9b9d2}
+html[data-theme=dark] :is(input,textarea,select){background:#132238;color:#e7edf8;border-color:#415574}
+html[data-theme=dark] :is(button.secondary,.pill,.courses-tab,.mobile-nav-item.active){background:#273d5e;color:#d5e5ff}
+html[data-theme=dark] .progress{background:#334761}
+html[data-theme=dark] .avatar{background:#263e66;color:#e6efff}
+html[data-theme=dark] .hero{color:#fff}
+html[data-theme=dark] .hero :is(h1,p,.eyebrow){color:inherit}
+html[data-theme=dark] .hero-button{background:#fff;color:#23569c}
+html[data-theme=dark] .reader-annotation-editor blockquote{background:#3b3424;color:#fff0b5}
+@media(max-width:680px){.settings-sections{gap:12px}.settings-option select,.settings-option input[type=range]{max-width:100%}}

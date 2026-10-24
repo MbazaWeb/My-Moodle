@@ -73,50 +73,27 @@ export default function CloudApp(){
  }
  useEffect(()=>{
   let active=true;
-  async function validateSession(){
-   const sequence=++sessionCheckSequence.current;
-   try{
-    const {data:{session},error:sessionError}=await sb.auth.getSession();
-    if(!active||sequence!==sessionCheckSequence.current)return;
-    if(sessionError){if(isInvalidSessionError(sessionError)){recoverInvalidSession();return}setMessage('Unable to restore session: '+sessionError.message);setLoading(false);return}
-    if(!session){setUser(null);setLoading(false);return}
-    // getSession reads cached JWT; getUser verifies the token with the Auth server.
-    const {data:{user:verifiedUser},error:verifyError}=await sb.auth.getUser();
-    if(!active||sequence!==sessionCheckSequence.current)return;
-    if(verifyError){
-     if(isInvalidSessionError(verifyError)){recoverInvalidSession();return}
-     setMessage('Could not verify your session. Check your connection and refresh.');
-     setUser(null);setLoading(false);return;
-    }
-    setUser(verifiedUser);setLoading(false);
-   }catch{
-    if(active&&sequence===sessionCheckSequence.current){setMessage('Unable to verify authentication. Check your connection.');setUser(null);setLoading(false)}
-   }
-  }
-  void validateSession();
+  void sb.auth.getSession().then(({data,error})=>{
+   if(!active)return;
+   if(error){setMessage('Please log in again.');clearLocalAuth();setUser(null)}
+   else setUser(data.session?.user??null);
+   setLoading(false);
+  }).catch(()=>{if(active){setMessage('Unable to restore your session. Please log in again.');setUser(null);setLoading(false)}});
   const {data:{subscription}}=sb.auth.onAuthStateChange((event,session)=>{
    if(!active)return;
    if(event==='PASSWORD_RECOVERY')setRecovery(true);
-   if(event==='SIGNED_OUT'){sessionCheckSequence.current+=1;resetWorkspace();setLoading(false);return}
-   if(event==='SIGNED_IN'||event==='TOKEN_REFRESHED'){setUser(session?.user??null);setLoading(false)}
+   if(event==='SIGNED_OUT'){resetWorkspace();setLoading(false)}
+   else if(event==='SIGNED_IN'||event==='TOKEN_REFRESHED'){setUser(session?.user??null);setLoading(false)}
   });
-  return()=>{active=false;sessionCheckSequence.current+=1;subscription.unsubscribe()};
+  return()=>{active=false;subscription.unsubscribe()};
  },[]);
  async function handleSignOut(){
   if(signingOut)return;
   setSigningOut(true);setError('');
   try{
-   const {error:logoutError}=await sb.auth.signOut({scope:'local'});
-   if(logoutError&&!isInvalidSessionError(logoutError)){
-    setError('Sign out failed: '+logoutError.message);
-    return;
-   }
-   // A revoked/expired server session can reject signOut with 401/403.
-   // Remove the browser credentials in that case; do not weaken server authorization.
-   clearLocalAuth();resetWorkspace();
-   window.location.reload();
-  }catch{setError('Unable to sign out. Please try again.')}
-  finally{setSigningOut(false)}
+   // Device-only sign out: no request to /auth/v1/logout for stale sessions.
+   clearLocalAuth();resetWorkspace();window.location.reload();
+  }catch{setError('Unable to clear this device session. Please try again.');setSigningOut(false)}
  }
 
  async function refresh(current:User){setError('');const [p,s,m,r,pr,a,sub,sl,ci,ex]=await Promise.all([

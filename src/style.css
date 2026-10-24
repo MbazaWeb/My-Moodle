@@ -334,3 +334,18 @@ html[data-reduce-motion=true] .subject-importer .import-progress.indeterminate>d
 html[data-theme=dark] .instructor-management .instructor-status.active{background:#174d37;color:#c8fbe0}
 html[data-theme=dark] .instructor-management .instructor-status.inactive{background:#5a222c;color:#ffe0e5}
 @media(max-width:740px){.admin-shortcuts{grid-template-columns:1fr}.instructor-management .instructor-form{grid-template-columns:1fr}.instructor-management .instructor-form>label:nth-child(3),.instructor-management .instructor-form>.row{grid-column:1}.instructor-management .password-field{flex-wrap:wrap}.instructor-management .password-field input{flex-basis:100%}.instructor-management .instructor-record>.row{flex-wrap:wrap}.instructor-management .instructor-subjects>.row{flex-wrap:wrap}.instructor-management .instructor-subjects select{width:100%}}
+
+
+/* Step-by-step subject draft authoring */
+.manual-draft{min-width:0}
+.manual-draft label{display:grid;gap:7px;font-weight:600}
+.manual-draft :is(input,textarea){width:100%;min-width:0;max-width:100%;font:inherit}
+.manual-draft .draft-steps{display:flex;gap:8px;flex-wrap:wrap}
+.manual-draft .draft-steps button.active,.manual-draft .draft-chapter-tabs button.active{border:2px solid #3b82f6;font-weight:800}
+.manual-draft .draft-chapter-tabs{display:flex;flex-wrap:wrap;gap:8px}
+.manual-draft .draft-import-box{padding:18px;border:1px dashed #8ca6c9;border-radius:12px;display:grid;gap:10px}
+.manual-draft .draft-topic{padding:18px;border:1px solid #dce5f0;border-radius:12px;min-width:0}
+.manual-draft .draft-topic p{white-space:pre-wrap;overflow-wrap:anywhere}
+html[data-theme=dark] .manual-draft .draft-topic{border-color:#425b7b;background:#20334e;color:#e8eef9}
+html[data-theme=dark] .manual-draft .draft-import-box{border-color:#607b9f;color:#e8eef9}
+@media(max-width:680px){.manual-draft .draft-steps button{flex:1}.manual-draft .draft-topic{padding:12px}.manual-draft .row{flex-wrap:wrap}}

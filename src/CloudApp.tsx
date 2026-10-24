@@ -50,19 +50,15 @@ export default function CloudApp(){
   if(signingOut)return;
   setSigningOut(true);setError('');
   try{
-   const {error}=await sb.auth.signOut({scope:'local'});
-   if(error){
-    // An expired/revoked session can make the Auth logout endpoint return 403.
-    // In that case, discard only this app's cached Supabase session.
-    const status=(error as {status?:number}).status;
-    if(status!==401&&status!==403){setError('Sign out failed: '+error.message);return}
-    const projectRef=new URL(import.meta.env.VITE_SUPABASE_URL as string).hostname.split('.')[0];
-    window.localStorage.removeItem('sb-'+projectRef+'-auth-token');
-   }
+   // Local-device logout: do not call /auth/v1/logout, which can reject stale sessions with 403.
+   // This removes the current browser's stored credentials; it does not revoke tokens server-side.
+   const projectRef=new URL(import.meta.env.VITE_SUPABASE_URL as string).hostname.split('.')[0];
+   const storageKey='sb-'+projectRef+'-auth-token';
+   window.localStorage.removeItem(storageKey);
+   window.sessionStorage.removeItem(storageKey);
    setUser(null);setProfile(null);setSubjectId(null);setModuleId(null);setPage('Dashboard');setRecovery(false);
-   // Reload to clear the auth client's in-memory session after a rejected logout.
    window.location.reload();
-  }catch(e){setError('Sign out failed. Please try again.')}finally{setSigningOut(false)}
+  }catch(e){setError('Unable to clear this device session. Please try again.');setSigningOut(false)}
  }
 
  async function refresh(current:User){setError('');const [p,s,m,r,pr,a,sub,sl,ci,ex]=await Promise.all([

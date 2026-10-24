@@ -46,7 +46,25 @@ export default function CloudApp(){
  useEffect(()=>{const timeout=window.setTimeout(()=>setSplashDone(true),1300);return()=>window.clearTimeout(timeout)},[]);
  useEffect(()=>{let active=true;void sb.auth.getSession().then(({data,error})=>{if(active){setUser(data.session?.user??null);if(error)setMessage(error.message);setLoading(false)}}).catch(()=>{if(active){setMessage('Unable to connect to authentication. Please try again.');setLoading(false)}});const {data:{subscription}}=sb.auth.onAuthStateChange((event,session)=>{if(active){if(event==='PASSWORD_RECOVERY')setRecovery(true);setUser(session?.user??null);setLoading(false)}});return()=>{active=false;subscription.unsubscribe()}},[]);
  const [signingOut,setSigningOut]=useState(false);
- async function handleSignOut(){if(signingOut)return;setSigningOut(true);setError('');try{const {error}=await sb.auth.signOut({scope:'local'});if(error){setError('Sign out failed: '+error.message);return}setUser(null);setProfile(null);setSubjectId(null);setModuleId(null);setPage('Dashboard');setIntroStage('landing');setRecovery(false);setMessage('You have signed out successfully.')}catch(e){setError('Sign out failed. Please try again.')}finally{setSigningOut(false)}}
+ async function handleSignOut(){
+  if(signingOut)return;
+  setSigningOut(true);setError('');
+  try{
+   const {error}=await sb.auth.signOut({scope:'local'});
+   if(error){
+    // An expired/revoked session can make the Auth logout endpoint return 403.
+    // In that case, discard only this app's cached Supabase session.
+    const status=(error as {status?:number}).status;
+    if(status!==401&&status!==403){setError('Sign out failed: '+error.message);return}
+    const projectRef=new URL(import.meta.env.VITE_SUPABASE_URL as string).hostname.split('.')[0];
+    window.localStorage.removeItem('sb-'+projectRef+'-auth-token');
+   }
+   setUser(null);setProfile(null);setSubjectId(null);setModuleId(null);setPage('Dashboard');setRecovery(false);
+   // Reload to clear the auth client's in-memory session after a rejected logout.
+   window.location.reload();
+  }catch(e){setError('Sign out failed. Please try again.')}finally{setSigningOut(false)}
+ }
+
  async function refresh(current:User){setError('');const [p,s,m,r,pr,a,sub,sl,ci,ex]=await Promise.all([
  sb.from('student_profiles').select('id,full_name,role,phone,institution,programme,study_year,study_semester').eq('id',current.id).single(),
  sb.from('study_subjects').select('*').order('year').order('semester').order('title'),

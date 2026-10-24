@@ -188,3 +188,11 @@ html,body,#root{width:100%;max-width:100%;min-width:0}body{overflow-x:clip}
 .reader-annotation-error{color:#a43443;font-size:13px}
 .book-reading-content{min-width:0}
 @media(max-width:680px){.reader-annotation-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}.reader-annotation-actions button{font-size:11px;padding:9px 5px;white-space:normal;gap:4px}.reader-annotation-actions button svg{display:none}.reader-annotations{padding:15px}}
+
+/* Student identity details in welcome hero */
+.welcome-academic-details{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0 20px;max-width:850px}
+.welcome-academic-details>div{display:flex;flex-direction:column;gap:5px;min-width:0;padding:12px 15px;background:#ffffff14;border:1px solid #ffffff24;border-radius:10px}
+.welcome-academic-details span{font-size:11px;letter-spacing:.045em;color:#d5e5ff;font-weight:600}
+.welcome-academic-details strong{font-size:15px;line-height:1.4;color:#fff;overflow-wrap:anywhere}
+@media(max-width:900px){.welcome-academic-details{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}}
+@media(max-width:400px){.welcome-academic-details>div{padding:10px}.welcome-academic-details strong{font-size:13px}}

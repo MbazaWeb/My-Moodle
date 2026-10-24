@@ -290,3 +290,19 @@ html[data-theme=dark] .learning-workspace .work-instructions{color:#d8e4f5}
 
 .learning-workspace .work-optin{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .learning-workspace .work-optin input[type=checkbox]{width:18px;height:18px;min-width:18px;accent-color:#3b82f6}
+
+
+/* Instructor import, conversion, and review */
+.subject-importer{min-width:0}
+.subject-importer input[type=file]{max-width:100%;font:inherit}
+.subject-importer .import-status{padding:16px;border-radius:12px;background:#eef5ff;display:grid;gap:12px}
+.subject-importer .import-progress{height:12px;overflow:hidden;border-radius:99px;background:#d3e0f4}
+.subject-importer .import-progress>div{height:100%;border-radius:99px;background:#3274d8;transition:width .24s ease}
+.subject-importer .import-progress.indeterminate>div{width:35%!important;animation:import-scan 1.5s ease-in-out infinite}
+.subject-importer textarea{white-space:pre-wrap;line-height:1.55}
+.subject-importer .work-item{min-width:0}
+@keyframes import-scan{0%{transform:translateX(-110%)}100%{transform:translateX(310%)}}
+html[data-theme=dark] .subject-importer .import-status{background:#1e3553;color:#e7efff}
+html[data-theme=dark] .subject-importer .import-progress{background:#3b4e6a}
+html[data-reduce-motion=true] .subject-importer .import-progress.indeterminate>div{animation:none}
+@media(max-width:680px){.subject-importer .row{flex-wrap:wrap}.subject-importer textarea{width:100%}}

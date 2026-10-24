@@ -11,6 +11,12 @@ type CalendarItem={id:string;student_id:string;title:string;details:string;kind:
 type ExamItem={id:string;subject_id:string;title:string;starts_at:string;ends_at:string|null;venue:string;instructions:string};
 const sb=supabase!;
 const storage='shared-study-materials';
+function isInvalidSessionError(error:{message?:string;code?:string;status?:number}){
+ const detail=(error.code||'')+' '+(error.message||'');
+ return /session_not_found|session.*not.*found|refresh_token_not_found|invalid_refresh_token|invalid.*jwt|jwt.*expired/i.test(detail)
+  ||(error.status===401||error.status===403)&&/session|token|jwt/i.test(detail);
+}
+
 export default function CloudApp(){
  const [introStage,setIntroStage]=useState<'splash'|'landing'|'auth'>('splash');const [splashDone,setSplashDone]=useState(false);const [user,setUser]=useState<User|null>(null),[recovery,setRecovery]=useState(false),[loading,setLoading]=useState(true),[authMode,setAuthMode]=useState<'login'|'register'>('login');
  const [name,setName]=useState(''),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[message,setMessage]=useState('');
@@ -44,21 +50,73 @@ export default function CloudApp(){
  function continueStudying(id:string){const units=modules.filter(m=>m.subject_id===id).sort((a,b)=>a.position-b.position);const bookmark=readingBookmarks[id];const target=units.find(m=>m.id===bookmark?.module_id)||units.find(m=>!done.has(m.id))||units[0];setPage('My Courses');setSubjectId(id);setTopicIndex(target?.id===bookmark?.module_id?bookmark.topic_index:0);setModuleId(target?.id||null);setReaderContentsOpen(false)}
 
  useEffect(()=>{const timeout=window.setTimeout(()=>setSplashDone(true),1300);return()=>window.clearTimeout(timeout)},[]);
- useEffect(()=>{let active=true;void sb.auth.getSession().then(({data,error})=>{if(active){setUser(data.session?.user??null);if(error)setMessage(error.message);setLoading(false)}}).catch(()=>{if(active){setMessage('Unable to connect to authentication. Please try again.');setLoading(false)}});const {data:{subscription}}=sb.auth.onAuthStateChange((event,session)=>{if(active){if(event==='PASSWORD_RECOVERY')setRecovery(true);setUser(session?.user??null);setLoading(false)}});return()=>{active=false;subscription.unsubscribe()}},[]);
  const [signingOut,setSigningOut]=useState(false);
+ const sessionCheckSequence=useRef(0);
+ function clearLocalAuth(){
+  // Only remove My Moodle's Supabase credentials, not learning preferences or other apps.
+  const projectRef=new URL(import.meta.env.VITE_SUPABASE_URL as string).hostname.split('.')[0];
+  const storageKey='sb-'+projectRef+'-auth-token';
+  window.localStorage.removeItem(storageKey);
+  window.sessionStorage.removeItem(storageKey);
+ }
+ function resetWorkspace(){
+  setUser(null);setProfile(null);setSubjectId(null);setModuleId(null);setPage('Dashboard');setRecovery(false);
+  setSubjects([]);setModules([]);setResources([]);setProgress([]);setStudyList([]);setReadingBookmarks({});
+  activeUserId.current=null;
+ }
+ function recoverInvalidSession(){
+  sessionCheckSequence.current+=1;
+  clearLocalAuth();resetWorkspace();
+  setMessage('Your previous session is no longer valid. Please log in again.');
+  // Reset Supabase client's cached auth state without reusing the invalid JWT.
+  window.location.reload();
+ }
+ useEffect(()=>{
+  let active=true;
+  async function validateSession(){
+   const sequence=++sessionCheckSequence.current;
+   try{
+    const {data:{session},error:sessionError}=await sb.auth.getSession();
+    if(!active||sequence!==sessionCheckSequence.current)return;
+    if(sessionError){if(isInvalidSessionError(sessionError)){recoverInvalidSession();return}setMessage('Unable to restore session: '+sessionError.message);setLoading(false);return}
+    if(!session){setUser(null);setLoading(false);return}
+    // getSession reads cached JWT; getUser verifies the token with the Auth server.
+    const {data:{user:verifiedUser},error:verifyError}=await sb.auth.getUser();
+    if(!active||sequence!==sessionCheckSequence.current)return;
+    if(verifyError){
+     if(isInvalidSessionError(verifyError)){recoverInvalidSession();return}
+     setMessage('Could not verify your session. Check your connection and refresh.');
+     setUser(null);setLoading(false);return;
+    }
+    setUser(verifiedUser);setLoading(false);
+   }catch{
+    if(active&&sequence===sessionCheckSequence.current){setMessage('Unable to verify authentication. Check your connection.');setUser(null);setLoading(false)}
+   }
+  }
+  void validateSession();
+  const {data:{subscription}}=sb.auth.onAuthStateChange((event,session)=>{
+   if(!active)return;
+   if(event==='PASSWORD_RECOVERY')setRecovery(true);
+   if(event==='SIGNED_OUT'){sessionCheckSequence.current+=1;resetWorkspace();setLoading(false);return}
+   if(event==='SIGNED_IN'||event==='TOKEN_REFRESHED'){setUser(session?.user??null);setLoading(false)}
+  });
+  return()=>{active=false;sessionCheckSequence.current+=1;subscription.unsubscribe()};
+ },[]);
  async function handleSignOut(){
   if(signingOut)return;
   setSigningOut(true);setError('');
   try{
-   // Local-device logout: do not call /auth/v1/logout, which can reject stale sessions with 403.
-   // This removes the current browser's stored credentials; it does not revoke tokens server-side.
-   const projectRef=new URL(import.meta.env.VITE_SUPABASE_URL as string).hostname.split('.')[0];
-   const storageKey='sb-'+projectRef+'-auth-token';
-   window.localStorage.removeItem(storageKey);
-   window.sessionStorage.removeItem(storageKey);
-   setUser(null);setProfile(null);setSubjectId(null);setModuleId(null);setPage('Dashboard');setRecovery(false);
+   const {error:logoutError}=await sb.auth.signOut({scope:'local'});
+   if(logoutError&&!isInvalidSessionError(logoutError)){
+    setError('Sign out failed: '+logoutError.message);
+    return;
+   }
+   // A revoked/expired server session can reject signOut with 401/403.
+   // Remove the browser credentials in that case; do not weaken server authorization.
+   clearLocalAuth();resetWorkspace();
    window.location.reload();
-  }catch(e){setError('Unable to clear this device session. Please try again.');setSigningOut(false)}
+  }catch{setError('Unable to sign out. Please try again.')}
+  finally{setSigningOut(false)}
  }
 
  async function refresh(current:User){setError('');const [p,s,m,r,pr,a,sub,sl,ci,ex]=await Promise.all([

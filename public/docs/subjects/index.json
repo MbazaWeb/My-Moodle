@@ -8,6 +8,14 @@
       "semester": 1,
       "description": "Management foundations, planning, organizing, directing and controlling.",
       "file": "principles-of-management.json"
+    },
+    {
+      "code": "BCO101",
+      "title": "Business Communication Skills and Office Practice",
+      "year": 1,
+      "semester": 1,
+      "description": "Business communication, professional correspondence, office administration, records management and workplace practice.",
+      "file": "business-communication-office-practice.json"
     }
   ]
 }

@@ -267,3 +267,23 @@ html[data-theme=dark] .book-body blockquote{border-left-color:#8dbbfa;color:#d7e
 html[data-theme=dark] .book-paper a{color:#a7ccff}
 html[data-theme=dark] .book-paper :is(button,a):focus-visible,
 html[data-theme=dark] .book-toc :is(button,a):focus-visible{outline:2px solid #93c5fd;outline-offset:2px}
+
+
+/* Instructor Studio and student workload */
+.learning-workspace{max-width:1180px}
+.learning-workspace .card{min-width:0}
+.learning-workspace label{display:grid;gap:7px;font-weight:600}
+.learning-workspace :is(input,select,textarea){width:100%;max-width:100%;min-width:0}
+.learning-workspace .work-form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:12px}
+.learning-workspace .work-item{border:1px solid #dce5f0;border-radius:10px;padding:18px;display:grid;gap:10px}
+.learning-workspace .work-instructions{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.65}
+.learning-workspace .work-submission{padding:14px;border:1px solid #dce5f0;border-radius:8px;display:grid;gap:10px}
+.learning-workspace .work-submission p{white-space:pre-wrap;overflow-wrap:anywhere}
+.work-instructor-box{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:14px;background:#f3f7fd;border-radius:10px}
+.work-instructor-box label{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.work-instructor-box select{max-width:280px}
+html[data-theme=dark] .learning-workspace .work-item,
+html[data-theme=dark] .learning-workspace .work-submission{border-color:#425b7b;color:#e8eef9;background:#20334e}
+html[data-theme=dark] .work-instructor-box{background:#233852;color:#e8eef9}
+html[data-theme=dark] .learning-workspace .work-instructions{color:#d8e4f5}
+@media(max-width:680px){.learning-workspace .work-item{padding:12px}.work-instructor-box{display:grid}.work-instructor-box select{max-width:100%}}

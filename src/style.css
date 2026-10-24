@@ -216,3 +216,22 @@ html[data-theme=dark] .hero :is(h1,p,.eyebrow){color:inherit}
 html[data-theme=dark] .hero-button{background:#fff;color:#23569c}
 html[data-theme=dark] .reader-annotation-editor blockquote{background:#3b3424;color:#fff0b5}
 @media(max-width:680px){.settings-sections{gap:12px}.settings-option select,.settings-option input[type=range]{max-width:100%}}
+
+/* Dark-mode contrast fixes: authentication and dialogs */
+html[data-theme=dark] .auth-wrap{background:linear-gradient(135deg,#0d1830,#193d72)}
+html[data-theme=dark] .auth-card{background:#192940;color:#eaf1ff;border:1px solid #38516f;box-shadow:0 20px 60px #050c1e80}
+html[data-theme=dark] .auth-card :is(h1,h2,h3,label,strong,p){color:#eaf1ff}
+html[data-theme=dark] .auth-card p{color:#b5c7e0}
+html[data-theme=dark] .auth-card :is(input,select,textarea){background:#101e33;color:#fff;border:1px solid #587397}
+html[data-theme=dark] .auth-card :is(input,select,textarea)::placeholder{color:#aabbd4;opacity:1}
+html[data-theme=dark] .auth-card :is(input,select,textarea):focus-visible{outline:2px solid #85b5ff;outline-offset:2px;border-color:#85b5ff}
+html[data-theme=dark] .auth-card button:not(.secondary):not(.textbtn){background:#3278da;color:#fff}
+html[data-theme=dark] .auth-card button.secondary{background:#304e78;color:#f3f7ff}
+html[data-theme=dark] .auth-card button.textbtn{background:transparent;color:#90beff}
+html[data-theme=dark] .auth-card a{color:#90beff}
+html[data-theme=dark] .auth-card .error{background:#492732;color:#ffdbe1;border-color:#a35d6c}
+html[data-theme=dark] .profile-modal{background:#1a2940;color:#edf3ff;border-color:#3c526e}
+html[data-theme=dark] .profile-modal :is(h2,label,p,strong){color:#edf3ff}
+html[data-theme=dark] .profile-modal :is(input,textarea,select){background:#112039;color:#edf3ff;border-color:#526c8e}
+html[data-theme=dark] .profile-modal :is(input,textarea,select)::placeholder{color:#a9bbd4}
+html[data-theme=dark] .profile-modal :is(input,textarea,select):focus-visible{outline:2px solid #85b5ff;outline-offset:2px}
